@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_limiter.util import get_remote_address
 from app import db
 from app.models.student import Student
 from app.models.moderator import Moderator
@@ -7,6 +8,7 @@ from app.utils.decorators import student_required, moderator_required
 user_management_blueprint = Blueprint('user_management', __name__)
 
 # Fetch student profile
+@limiter.limit("15 per minute", key_func=get_remote_address)
 @user_management_blueprint.route('/student/profile', methods=['GET'])
 @student_required
 def get_student_profile():
@@ -15,6 +17,7 @@ def get_student_profile():
     return jsonify(student.to_dict()), 200
 
 # Update student profile
+@limiter.limit("15 per minute", key_func=get_remote_address)
 @user_management_blueprint.route('/student/profile', methods=['PUT'])
 @student_required
 def update_student_profile():
@@ -29,6 +32,7 @@ def update_student_profile():
     return jsonify({'message': 'Profile updated successfully'}), 200
 
 # Fetch moderator profile
+@limiter.limit("5 per minute", key_func=get_remote_address)
 @user_management_blueprint.route('/moderator/profile', methods=['GET'])
 @moderator_required
 def get_moderator_profile():
@@ -37,6 +41,7 @@ def get_moderator_profile():
     return jsonify(moderator.to_dict()), 200
 
 # Update moderator profile
+@limiter.limit("15 per minute", key_func=get_remote_address)
 @user_management_blueprint.route('/moderator/profile', methods=['PUT'])
 @moderator_required
 def update_moderator_profile():
