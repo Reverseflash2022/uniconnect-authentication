@@ -36,7 +36,7 @@ Welcome to UniConnect's Authentication and Authorization microservice. This repo
 
 1. **Clone the Repo**:
     ```bash
-    git clone https://github.com/your_username_/uniconnect-authentication.git
+    git clone https://github.com/Reverseflash2022/uniconnect-authentication.git
     cd uniconnect-authentication
     ```
 
