@@ -1,12 +1,14 @@
 from flask import Blueprint, jsonify, request
 from app import jwt, db
 from app.models.student import Student
+from flask_limiter.util import get_remote_address
 from app.models.moderator import Moderator
 from app.utils.jwt_utils import encode_auth_token, decode_auth_token, get_current_user_role
 from werkzeug.security import generate_password_hash
 
 auth_blueprint = Blueprint('auth', __name__)
 
+@limiter.limit("10 per minute", key_func=get_remote_address)
 @auth_blueprint.route('/signup', methods=['POST'])
 def signup():
     post_data = request.get_json()
@@ -34,6 +36,7 @@ def signup():
 
     return jsonify({'message': 'Invalid role provided'}), 400
 
+@limiter.limit("10 per minute", key_func=get_remote_address)
 @auth_blueprint.route('/login', methods=['POST'])
 def login():
     post_data = request.get_json()
@@ -57,6 +60,7 @@ def login():
 
     return jsonify({'message': 'Invalid credentials provided'}), 401
 
+@limiter.limit("5 per minute", key_func=get_remote_address)
 @auth_blueprint.route('/logout', methods=['POST'])
 def logout():
     # Token invalidation can be implemented in multiple ways, 
