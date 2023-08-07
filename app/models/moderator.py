@@ -8,3 +8,6 @@ class Moderator(db.Model):
     associated_university = db.Column(db.String(250), nullable=False)
     permissions = db.Column(db.String(500))  # This can be improved with a proper permissioning system later
 
+    def __repr__(self):
+        return f"<Moderator {self.moderator_id}>"
+
