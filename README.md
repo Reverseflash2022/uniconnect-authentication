@@ -42,6 +42,7 @@ Welcome to UniConnect's Authentication and Authorization microservice. This repo
 
 2. **Set up Environment Variables**:
     - Copy the `.env.example` to `.env` and adjust the values to match your local setup.
+      
     ```bash
     cp .env.example .env
     ```
