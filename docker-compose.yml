@@ -1,1 +1,25 @@
+version: '3.8'
+
+services:
+  uniconnect-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: uniconnect
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - uniconnect-data:/var/lib/mysql
+
+  uniconnect-authentication:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: "mysql+pymysql://user:password@uniconnect-db:3306/uniconnect"
+    depends_on:
+      - uniconnect-db
+
+volumes:
+  uniconnect-data:
 
