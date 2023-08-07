@@ -10,6 +10,9 @@ class Student(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     courses = db.Column(db.String(500))  # This can be improved with a proper relationship later
 
+    def __repr__(self):
+        return f"<Student {self.username}>"
+
     @property
     def password(self):
         raise AttributeError('Password is not a readable attribute.')
