@@ -119,4 +119,5 @@ Distributed under the MIT License. See the `LICENSE` file for more information.
 
 Repo Admin - ouzukwu@icloud.com
 
-Project Link: [https://github.com/your_username_/uniconnect-authentication](https://github.com/your_username_/uniconnect-authentication)
+Project Link: [https://github.com/Reverseflash2022/uniconnect-authentication.git](https://github.com/Reverseflash2022/uniconnect-authentication.git)
+
