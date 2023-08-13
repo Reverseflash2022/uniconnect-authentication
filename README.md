@@ -1,4 +1,4 @@
-# UniConnect Authentication and Authorization Microservice
+# UniConnect Authentication and Authorization Microservice[DEPRICATED]
 
 Welcome to UniConnect's Authentication and Authorization microservice. This repository contains the necessary modules for authenticating students and moderators and authorizing them based on their roles. Designed with scalability and security in mind, this service uses Flask, MySQL, Docker, and JWT-based authentication, among other technologies.
 
